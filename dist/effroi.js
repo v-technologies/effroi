@@ -1,9 +1,9 @@
-!function(e){"object"==typeof exports?module.exports=e():"function"==typeof define&&define.amd?define(e):"undefined"!=typeof window?window.effroi=e():"undefined"!=typeof global?global.effroi=e():"undefined"!=typeof self&&(self.effroi=e())}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.effroi=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 function Keyboard() {
 
-  var utils = require('../utils.js');
-  var mouse = require('./mouse.js');
-  var uiFocus = require('../ui/focus.js');
+  var utils = _dereq_('../utils.js');
+  var mouse = _dereq_('./mouse.js');
+  var uiFocus = _dereq_('../ui/focus.js');
 
   // Configuration
   this.locale = ''; // ex: en-US
@@ -246,8 +246,8 @@ function Keyboard() {
   */
   this.tab = function tab() {
     var elements = utils.getFocusableElements(), dispatched;
-    // if nothing/nothing else to focus, fail
-    if(1 >= elements.length) {
+    // if nothing to focus, fail
+    if(0 === elements.length) {
       return false;
     }
     // Looking for the activeElement index
@@ -553,11 +553,11 @@ function Keyboard() {
 module.exports = new Keyboard();
 
 
-},{"../ui/focus.js":8,"../utils.js":9,"./mouse.js":2}],2:[function(require,module,exports){
+},{"../ui/focus.js":8,"../utils.js":9,"./mouse.js":2}],2:[function(_dereq_,module,exports){
 function Mouse() {
 
-  var utils = require('../utils.js');
-  var uiFocus = require('../ui/focus.js');
+  var utils = _dereq_('../utils.js');
+  var uiFocus = _dereq_('../ui/focus.js');
 
   // Consts
   this.LEFT_BUTTON = 1;
@@ -982,12 +982,12 @@ function Mouse() {
 
 module.exports = new Mouse();
 
-},{"../ui/focus.js":8,"../utils.js":9}],3:[function(require,module,exports){
+},{"../ui/focus.js":8,"../utils.js":9}],3:[function(_dereq_,module,exports){
 function Pointers () {
 
   // Neeed mouse to perform click
-  var mouse = require('./mouse.js');
-  var utils = require('../utils.js');
+  var mouse = _dereq_('./mouse.js');
+  var utils = _dereq_('../utils.js');
 
   // Consts
   // Buttons : http://msdn.microsoft.com/en-us/library/ie/ff974878(v=vs.85).aspx
@@ -1171,12 +1171,12 @@ function Pointers () {
 
 module.exports = new Pointers();
 
-},{"../utils.js":9,"./mouse.js":2}],4:[function(require,module,exports){
+},{"../utils.js":9,"./mouse.js":2}],4:[function(_dereq_,module,exports){
 function Tactile() {
 
   // Neeed mouse to perform click
-  var mouse = require('./mouse.js');
-  var utils = require('../utils.js');
+  var mouse = _dereq_('./mouse.js');
+  var utils = _dereq_('../utils.js');
 
   /**
   * Indicates if tactile zone is available
@@ -1358,10 +1358,10 @@ function Tactile() {
 
 module.exports = new Tactile();
 
-},{"../utils.js":9,"./mouse.js":2}],5:[function(require,module,exports){
+},{"../utils.js":9,"./mouse.js":2}],5:[function(_dereq_,module,exports){
 function Element(selector) {
     
-    var mouse = require('../devices/mouse.js');
+    var mouse = _dereq_('../devices/mouse.js');
 
     this.selector = selector;
     this.element = document.querySelector(selector);
@@ -1394,10 +1394,10 @@ module.exports = function element(selector) {
     return new Element(selector);
 };
 
-},{"../devices/mouse.js":2}],6:[function(require,module,exports){
+},{"../devices/mouse.js":2}],6:[function(_dereq_,module,exports){
 function Input(elementOrSelector) {
     
-    var mouse = require('../devices/mouse.js');
+    var mouse = _dereq_('../devices/mouse.js');
 
     if (typeof elementOrSelector == 'string') {
         this.element = document.querySelector(elementOrSelector);
@@ -1438,24 +1438,24 @@ function Input(elementOrSelector) {
 module.exports = function input(elementOrSelector) {
     return new Input(elementOrSelector);
 };
-},{"../devices/mouse.js":2}],7:[function(require,module,exports){
+},{"../devices/mouse.js":2}],7:[function(_dereq_,module,exports){
 // Devices
-module.exports.mouse = require('./devices/mouse.js');
-module.exports.keyboard = require('./devices/keyboard.js');
-module.exports.tactile = require('./devices/tactile.js');
-module.exports.pointers = require('./devices/pointers.js');
+module.exports.mouse = _dereq_('./devices/mouse.js');
+module.exports.keyboard = _dereq_('./devices/keyboard.js');
+module.exports.tactile = _dereq_('./devices/tactile.js');
+module.exports.pointers = _dereq_('./devices/pointers.js');
 
 // UI
-module.exports.focus = require('./ui/focus.js');
+module.exports.focus = _dereq_('./ui/focus.js');
 
 // DSL
-module.exports.element = require('./dsl/element.js');
-module.exports.input = require('./dsl/input.js');
+module.exports.element = _dereq_('./dsl/element.js');
+module.exports.input = _dereq_('./dsl/input.js');
 
-},{"./devices/keyboard.js":1,"./devices/mouse.js":2,"./devices/pointers.js":3,"./devices/tactile.js":4,"./dsl/element.js":5,"./dsl/input.js":6,"./ui/focus.js":8}],8:[function(require,module,exports){
+},{"./devices/keyboard.js":1,"./devices/mouse.js":2,"./devices/pointers.js":3,"./devices/tactile.js":4,"./dsl/element.js":5,"./dsl/input.js":6,"./ui/focus.js":8}],8:[function(_dereq_,module,exports){
 function Focus() {
 
-  var utils = require('../utils.js');
+  var utils = _dereq_('../utils.js');
 
   // Private vars
   var _focusedInput, _focusedInputValue;
@@ -1643,7 +1643,7 @@ function Focus() {
 
 module.exports = new Focus();
 
-},{"../utils.js":9}],9:[function(require,module,exports){
+},{"../utils.js":9}],9:[function(_dereq_,module,exports){
 module.exports={
 
   setEventCoords: function(event, x, y) {
@@ -1750,11 +1750,12 @@ module.exports={
 
   // Returns a list of focusable elements in the document
   getFocusableElements: function(element) {
-    // FIXME: Ordinate elements with tabindexes + fallback for querySelector
+    // FIXME: support elements with tabindex !== 0 and fallback for querySelector
     return document.querySelectorAll(
       'input:not(:disabled), textarea:not(:disabled), '
       + 'a[href]:not(:disabled):not(:empty), button:not(:disabled), '
-      + 'select:not(:disabled)');
+      + 'select:not(:disabled), '
+      + '[tabindex="0"]:not(:disabled)');
   },
 
   // dispatch a simple event
@@ -1794,4 +1795,3 @@ module.exports={
 },{}]},{},[7])
 (7)
 });
-;
