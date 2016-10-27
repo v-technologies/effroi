@@ -5,6 +5,8 @@
   "author": "Raphaël Rougeron, Nicolas Froidure",
   "main": "dist/effroi.js",
   "scripts": {
+    "build": "grunt dist",
+    "watch": "grunt watch",
     "test": "grunt test"
   },
   "repository": {

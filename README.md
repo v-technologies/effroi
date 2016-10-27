@@ -78,19 +78,22 @@ tactile.touch(); // Returns true if dispatched
 ```
 
 #### Unified pointing device API (PointerEvents)
+
 Under development.
 
 ## How to contribute
 
 1. Clone this repo
-2. npm install
-3. To run the tests: 
+2. `npm install`
+3. `npm install -g grunt-cli`
+3. To run the tests:
 
 ```sh
-grunt test
+npm test
 ```
-4. To build the lib: 
+
+4. To build the lib:
 
 ```sh
-grunt dist
+npm run build
 ```
