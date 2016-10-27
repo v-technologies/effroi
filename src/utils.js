@@ -104,11 +104,12 @@ module.exports={
 
   // Returns a list of focusable elements in the document
   getFocusableElements: function(element) {
-    // FIXME: Ordinate elements with tabindexes + fallback for querySelector
+    // FIXME: support elements with tabindex !== 0 and fallback for querySelector
     return document.querySelectorAll(
       'input:not(:disabled), textarea:not(:disabled), '
       + 'a[href]:not(:disabled):not(:empty), button:not(:disabled), '
-      + 'select:not(:disabled)');
+      + 'select:not(:disabled), '
+      + '[tabindex="0"]:not(:disabled)');
   },
 
   // dispatch a simple event
