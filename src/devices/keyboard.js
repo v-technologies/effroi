@@ -245,8 +245,8 @@ function Keyboard() {
   */
   this.tab = function tab() {
     var elements = utils.getFocusableElements(), dispatched;
-    // if nothing/nothing else to focus, fail
-    if(1 >= elements.length) {
+    // if nothing to focus, fail
+    if(0 === elements.length) {
       return false;
     }
     // Looking for the activeElement index
