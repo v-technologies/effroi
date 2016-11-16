@@ -111,7 +111,7 @@ function Keyboard() {
     'RecallFavorite1', 'RecallFavorite2', 'RecallFavorite3', 'MediaRecord',
     'RecordSpeedNext', 'Red', 'MediaRewind', 'RfBypass', 'ScanChannelsToggle',
     'ScreenModeNext', 'Settings', 'SplitScreenToggle', 'StoreFavorite0',
-    'StoreFavorite1', 'StoreFavorite2', 'StoreFavorite3', 'Subtitle', 
+    'StoreFavorite1', 'StoreFavorite2', 'StoreFavorite3', 'Subtitle',
     'AudioSurroundModeNext', 'Teletext', 'VideoModeNext', 'DisplayWide', 'Wink',
     'Yellow', 'Unidentified'
   ];
@@ -262,6 +262,32 @@ function Keyboard() {
       elements[0] : elements[i+1]);
     // Release the tab key
     this.up(this.TAB);
+    return dispatched;
+  };
+
+  /**
+   * Shift Tab to previous element
+   * @return Boolean
+  */
+  this.shiftTab = function shiftTab() {
+    var elements = utils.getFocusableElements(), dispatched;
+    // if nothing/nothing else to focus, fail
+    if(1 >= elements.length) {
+      return false;
+    }
+    // Looking for the activeElement index
+    for(var i=elements.length-1; i>=0; i--) {
+      if(elements[i] === document.activeElement) {
+        break;
+      }
+    }
+    // Push the tab key down
+    this.down.apply(this, [this.TAB, this.SHIFT]);
+    // Focus the previous element
+    dispatched = uiFocus.focus(-1 === i || i-1 < 0 ?
+      elements[elements.length - 1] : elements[i-1]);
+    // Release the tab key
+    this.up.apply(this, [this.TAB, this.SHIFT]);
     return dispatched;
   };
 
