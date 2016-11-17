@@ -46,5 +46,8 @@
     "event",
     "events",
     "simulation"
-  ]
+  ],
+  "dependencies": {
+    "tabbable": "^1.0.4"
+  }
 }

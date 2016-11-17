@@ -66,7 +66,7 @@ module.exports={
     if (nodeName === 'textarea') {
       return true;
     }
-    if (nodeName === 'input' 
+    if (nodeName === 'input'
       && ['text', 'password', 'number', 'date'].indexOf(type) !== -1) {
       return true;
     }
@@ -100,16 +100,6 @@ module.exports={
       return true;
     }
     return false;
-  },
-
-  // Returns a list of focusable elements in the document
-  getFocusableElements: function(element) {
-    // FIXME: support elements with tabindex !== 0 and fallback for querySelector
-    return document.querySelectorAll(
-      'input:not(:disabled), textarea:not(:disabled), '
-      + 'a[href]:not(:disabled):not(:empty), button:not(:disabled), '
-      + 'select:not(:disabled), '
-      + '[tabindex="0"]:not(:disabled)');
   },
 
   // dispatch a simple event

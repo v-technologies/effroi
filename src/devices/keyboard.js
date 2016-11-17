@@ -1,5 +1,6 @@
 function Keyboard() {
 
+  var tabbable = require('tabbable');
   var utils = require('../utils.js');
   var mouse = require('./mouse.js');
   var uiFocus = require('../ui/focus.js');
@@ -244,7 +245,7 @@ function Keyboard() {
   * @return Boolean
   */
   this.tab = function tab() {
-    var elements = utils.getFocusableElements(), dispatched;
+    var elements = tabbable(document.body), dispatched;
     // if nothing to focus, fail
     if(0 === elements.length) {
       return false;
@@ -270,7 +271,7 @@ function Keyboard() {
    * @return Boolean
   */
   this.shiftTab = function shiftTab() {
-    var elements = utils.getFocusableElements(), dispatched;
+    var elements = tabbable(document.body), dispatched;
     // if nothing/nothing else to focus, fail
     if(1 >= elements.length) {
       return false;
