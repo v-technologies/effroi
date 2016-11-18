@@ -214,6 +214,14 @@ function Keyboard() {
     return modifiers;
   }
 
+  this.enter = function enter() {
+    this.hit(this.ENTER);
+    var current = document.activeElement;
+    if (current.tagName === "A" || current.tagName === "BUTTON") {
+      mouse.click(current);
+    }
+  };
+
   /**
   * Focus an element by using tab
   *
