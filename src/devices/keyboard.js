@@ -215,10 +215,11 @@ function Keyboard() {
   }
 
   this.enter = function enter() {
-    this.hit(this.ENTER);
     var current = document.activeElement;
     if (current.tagName === "A" || current.tagName === "BUTTON") {
+      this.down(this.ENTER);
       mouse.click(current);
+      this.up(this.ENTER);
     }
   };
 
